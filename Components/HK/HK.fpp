@@ -1,30 +1,25 @@
-module Hk {
-    @ Housekeeping component for HEDGE2
-    active component Hk {
+module HK {
+    @ Housekeeping component
+    active component HK {
 
-        # One async command/port is required for active components
-        # This should be overridden by the developers with a useful command/port
-        @ TODO
-        async command TODO opcode 0
+        @ Commands
+        async command LOAD_CONFIG(
+            configFile: string size 64 @< Name of the configuration file to load
+        )
 
-        ##############################################################################
-        #### Uncomment the following examples to start customizing your component ####
-        ##############################################################################
-
-        # @ Example async command
-        # async command COMMAND_NAME(param_name: U32)
-
-        # @ Example telemetry counter
-        # telemetry ExampleCounter: U64
+        @ Example telemetry counter
+        telemetry voltage1: F32
+        telemetry current1: F32
+        telemetry mcuTemp: F32
 
         # @ Example event
         # event ExampleStateEvent(example_state: Fw.On) severity activity high id 0 format "State set to {}"
 
-        # @ Example port: receiving calls from the rate group
-        # sync input port run: Svc.Sched
+        @ Example port: receiving calls from the rate group
+        sync input port run: Svc.Sched
 
-        # @ Example parameter
-        # param PARAMETER_NAME: U32
+        @ Parameter
+        param SAMPLE_INTERVAL: U32 @< Interval at which to sample telemetry data
 
         ###############################################################################
         # Standard AC Ports: Required for Channels, Events, Commands, and Parameters  #

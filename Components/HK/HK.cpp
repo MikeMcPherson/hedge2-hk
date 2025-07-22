@@ -1,38 +1,52 @@
 // ======================================================================
-// \title  Hk.cpp
+// \title  HK.cpp
 // \author kq9p
-// \brief  cpp file for Hk component implementation class
+// \brief  cpp file for HK component implementation class
 // ======================================================================
 
-#include "Components/Hk/Hk.hpp"
+#include "Components/HK/HK.hpp"
 
-namespace Hk {
+namespace HK {
 
   // ----------------------------------------------------------------------
   // Component construction and destruction
   // ----------------------------------------------------------------------
 
-  Hk ::
-    Hk(const char* const compName) :
-      HkComponentBase(compName)
+  HK ::
+    HK(const char* const compName) :
+      HKComponentBase(compName)
   {
 
   }
 
-  Hk ::
-    ~Hk()
+  HK ::
+    ~HK()
   {
 
+  }
+
+  // ----------------------------------------------------------------------
+  // Handler implementations for typed input ports
+  // ----------------------------------------------------------------------
+
+  void HK ::
+    run_handler(
+        FwIndexType portNum,
+        U32 context
+    )
+  {
+    // TODO
   }
 
   // ----------------------------------------------------------------------
   // Handler implementations for commands
   // ----------------------------------------------------------------------
 
-  void Hk ::
-    TODO_cmdHandler(
+  void HK ::
+    LOAD_CONFIG_cmdHandler(
         FwOpcodeType opCode,
-        U32 cmdSeq
+        U32 cmdSeq,
+        const Fw::CmdStringArg& configFile
     )
   {
     // TODO

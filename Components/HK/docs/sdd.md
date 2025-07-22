@@ -1,6 +1,6 @@
-# Hk::Hk
+# HK::HK
 
-Housekeeping component for HEDGE2
+Housekeeping component
 
 ## Usage Examples
 Add usage examples here

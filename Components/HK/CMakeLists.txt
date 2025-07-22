@@ -11,8 +11,8 @@
 ####
 
 set(SOURCE_FILES
-  "${CMAKE_CURRENT_LIST_DIR}/Hk.fpp"
-  "${CMAKE_CURRENT_LIST_DIR}/Hk.cpp"
+  "${CMAKE_CURRENT_LIST_DIR}/HK.fpp"
+  "${CMAKE_CURRENT_LIST_DIR}/HK.cpp"
 )
 
 # Uncomment and add any modules that this component depends on, else
@@ -32,9 +32,9 @@ register_fprime_module()
 
 ### Unit Tests ###
 # set(UT_SOURCE_FILES
-#   "${CMAKE_CURRENT_LIST_DIR}/Hk.fpp"
-#   "${CMAKE_CURRENT_LIST_DIR}/test/ut/HkTestMain.cpp"
-#   "${CMAKE_CURRENT_LIST_DIR}/test/ut/HkTester.cpp"
+#   "${CMAKE_CURRENT_LIST_DIR}/HK.fpp"
+#   "${CMAKE_CURRENT_LIST_DIR}/test/ut/HKTestMain.cpp"
+#   "${CMAKE_CURRENT_LIST_DIR}/test/ut/HKTester.cpp"
 # )
 # set(UT_MOD_DEPS
 #   STest
