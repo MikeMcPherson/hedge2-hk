@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+# fprime
+fprime-venv
+build-*
+logs/
+lib/NMEAParserLib
+Components/Gnss/docs/html/
