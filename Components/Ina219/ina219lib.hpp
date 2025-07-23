@@ -116,11 +116,12 @@ class INA219
     
     // Private functions
     private:
-        U16         read_register(U8 register_value);
-        void        write_register(uint8_t register_address, uint16_t register_value);
+        struct I2cBuf {
+            U8 data[3]; //!< Buffer to read/write
+        };
+        I2cBuf      pack_register(U8 register_address, U16 register_value);
         float       determine_current_lsb(float max_expected_amps, float max_possible_amps);
-        void        calibrate(int bus_volts_max, float shunt_volts_max, float max_expected_amps);
-    
+        I2cBuf      calibrate(int bus_volts_max, float shunt_volts_max, float max_expected_amps);
 
     // Private variables
     private:
@@ -157,25 +158,13 @@ class INA219
                             ADC_2SAMP, ADC_4SAMP, ADC_8SAMP, ADC_16SAMP,
                             ADC_32SAMP, ADC_64SAMP, ADC_128SAMP.
         */
-        void configure(int voltage_range, int gain, int bus_adc, int shunt_adc);
-
-        /**
-         * @brief Put the INA219 into power down mode.
-         * 
-         */
-        void sleep();
-
-        /**
-         * @brief Wake the INA219 from power down mode.
-         * 
-         */
-        void wake();
+        I2cBuf configure(int voltage_range, int gain, int bus_adc, int shunt_adc);
 
         /**
          * @brief Reset the INA219 to its default configuration.
          * 
          */
-        void reset();
+        I2cBuf reset();
 
         /**
          * @brief Reads the bus voltage register from the sensor and converts to Volts.

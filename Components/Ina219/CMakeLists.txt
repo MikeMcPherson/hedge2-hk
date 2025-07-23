@@ -12,6 +12,7 @@
 
 set(SOURCE_FILES
   "${CMAKE_CURRENT_LIST_DIR}/Ina219.fpp"
+  "${CMAKE_CURRENT_LIST_DIR}/ina219lib.cpp"
   "${CMAKE_CURRENT_LIST_DIR}/Ina219.cpp"
 )
 
