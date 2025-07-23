@@ -29,6 +29,10 @@ namespace Ina219 {
 
       //! Destroy Ina219 object
       ~Ina219();
+    
+    private:
+
+    
 
     PRIVATE:
 
