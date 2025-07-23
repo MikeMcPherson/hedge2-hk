@@ -8,6 +8,8 @@
 #define HK_HK_HPP
 
 #include "Components/HK/HKComponentAc.hpp"
+#include "Os/File.hpp"
+#include "Os/Models/FileStatusEnumAc.hpp"
 
 namespace HK {
 
@@ -28,6 +30,13 @@ namespace HK {
 
       //! Destroy HK object
       ~HK();
+
+    private:
+
+    Fw::On m_telemetryEnabled = Fw::On::ON; //!< Telemetry enabled state (default ON)
+    Fw::On m_tasksEnabled = Fw::On::ON; //!< Tasks enabled state (default ON)
+    Os::File m_configFileHandle; //!< Configuration file
+    Os::FileInterface::Status m_configFileStatus; //!< Status of the file operation
 
     PRIVATE:
 
@@ -56,6 +65,20 @@ namespace HK {
           FwOpcodeType opCode, //!< The opcode
           U32 cmdSeq, //!< The command sequence number
           const Fw::CmdStringArg& configFile //!< Name of the configuration file to load
+      ) override;
+
+      //! Handler implementation for command ENABLE_TELEMETRY
+      void ENABLE_TELEMETRY_cmdHandler(
+          FwOpcodeType opCode, //!< The opcode
+          U32 cmdSeq, //!< The command sequence number
+          Fw::On enable //!< Enable or disable telemetry
+      ) override;
+
+      //! Handler implementation for command ENABLE_TASKS
+      void ENABLE_TASKS_cmdHandler(
+          FwOpcodeType opCode, //!< The opcode
+          U32 cmdSeq, //!< The command sequence number
+          Fw::On enable //!< Enable or disable housekeeping tasks
       ) override;
 
   };

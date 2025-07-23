@@ -6,14 +6,23 @@ module HK {
         async command LOAD_CONFIG(
             configFile: string size 64 @< Name of the configuration file to load
         )
+        async command ENABLE_TELEMETRY(
+            enable: Fw.On @< Enable or disable telemetry
+        )
+        async command ENABLE_TASKS(
+            enable: Fw.On @< Enable or disable housekeeping tasks
+        )
 
         @ Example telemetry counter
         telemetry voltage1: F32
         telemetry current1: F32
         telemetry mcuTemp: F32
 
-        # @ Example event
-        # event ExampleStateEvent(example_state: Fw.On) severity activity high id 0 format "State set to {}"
+        @ Events
+        event telemetryState(example_state: Fw.On) severity activity high format "State set to {}"
+        event tasksState(example_state: Fw.On) severity activity high format "State set to {}"
+        event configLoaded(config_filename: string) severity activity high format "HK config loaded: {}"
+        event configLoadFailed(config_filename: string) severity warning high format "HK config load failed: {}"
 
         @ Example port: receiving calls from the rate group
         sync input port run: Svc.Sched
